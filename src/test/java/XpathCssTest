@@ -1,0 +1,40 @@
+By.xpath():
+
+    //*[contains(text(), 'Sauce')] - текст на странице https://www.saucedemo.com/inventory-item.html?id=4
+
+    //div[@id='menu_button_container'] - кнопка меню там же
+
+    //div[contains(@id,'menu')] - тоже по частичному имени атрибута
+
+    На странице https://www.saucedemo.com/inventory.html:
+
+    //*[@class="btn btn_primary btn_small btn_inventory"]//ancestor::div - выбирает всех предков class в текущем узле
+
+    //*[@class="inventory_list"]//descendant::div - выбирает всех потомков
+
+    //*[@class="inventory_list"]//following::a - выбирает все элементы тега a текущего узла после inventory_list
+
+    //*[@class="inventory_item_description"]//parent::a - родительские элементы текущего узла, в данном случае имена товаров
+
+    //*[@id="about_sidebar_link"]//preceding::div - выбирает все узлы div перед текущим
+
+    By.ByCss:
+
+    https://www.saucedemo.com/inventory.html:
+
+    .inventory_item_name - имена товаров
+
+    .pricebar .inventory_item_price - цены товаров
+
+    #menu_button_container - кнопка меню
+
+    [href="https://www.linkedin.com/company/sauce-labs/"] = ссылка на linkedin
+
+    [class$=price] - все классы, которые заканчиваются на price
+
+    [name|=add]
+
+    https://www.saucedemo.com/:
+
+    [class^=login] - все классы, которые начинаются с login
+
