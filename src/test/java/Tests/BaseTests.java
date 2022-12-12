@@ -20,6 +20,8 @@ public abstract class BaseTests {
 
     protected CheckOutStepTwoPage checkOutStepTwoPage;
 
+    protected CheckOutCompletePage checkOutCompletePage;
+
     @BeforeClass
     public void setUp() {
 
@@ -33,6 +35,7 @@ public abstract class BaseTests {
         shoppingCartPage = new ShoppingCartPage(driver);
         checkOutPage = new CheckOutPage(driver);
         checkOutStepTwoPage = new CheckOutStepTwoPage(driver);
+        checkOutCompletePage = new CheckOutCompletePage(driver);
     }
 
     @BeforeMethod

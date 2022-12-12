@@ -28,8 +28,8 @@ public class LoginPage extends BasePages {
         driver.findElement(passwordInput).sendKeys(password);
     }
 
-    public String getErrorMessageText () {
-       return driver.findElement(errorMessageContainer).getText();
+    public boolean getErrorMessageText () {
+       return driver.findElement(errorMessageContainer).isDisplayed();
     }
 
 
