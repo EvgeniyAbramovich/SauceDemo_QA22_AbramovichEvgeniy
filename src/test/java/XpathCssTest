@@ -18,6 +18,8 @@ By.xpath():
 
     //*[@id="about_sidebar_link"]//preceding::div - выбирает все узлы div перед текущим
 
+    //div[text()='15.99'
+
     By.ByCss:
 
     https://www.saucedemo.com/inventory.html:

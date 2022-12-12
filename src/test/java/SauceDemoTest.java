@@ -27,7 +27,7 @@ public class SauceDemoTest {
         loginButton.click();
 
         String itemName = "Sauce Labs Bolt T-Shirt";
-        String price = "15.99";
+        String price = "$15.99";
 
         WebElement addToCard = driver.findElement(By.cssSelector("[data-test=\"add-to-cart-sauce-labs-bolt-t-shirt\"]"));
         addToCard.click();
@@ -36,17 +36,9 @@ public class SauceDemoTest {
 
         WebElement addItem = driver.findElement(By.xpath("//*[contains(text(), 'Sauce Labs Bolt T-Shirt')]"));
         Assert.assertEquals(addItem.getText(), itemName);
-        WebElement cardPrice = driver.findElement(By.xpath("//div[text()='15.99']"));
+        WebElement cardPrice = driver.findElement(By.className("inventory_item_price"));
         Assert.assertEquals(cardPrice.getText(), price);
 
-
-
-
-
-
-
-
-
-
+        driver.quit();
     }
 }
