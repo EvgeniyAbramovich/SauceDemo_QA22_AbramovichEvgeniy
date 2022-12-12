@@ -28,7 +28,7 @@ public class LoginPage extends BasePages {
         driver.findElement(passwordInput).sendKeys(password);
     }
 
-    public boolean getErrorMessageText () {
+    public boolean isErrorMessagePresent () {
        return driver.findElement(errorMessageContainer).isDisplayed();
     }
 

@@ -18,7 +18,7 @@ public class LoginTests extends BaseTests {
         loginPage.setUsername("standard_user");
         loginPage.setPassword("fdjidfjdfjd");
         loginPage.clickLoginButton();
-        Assert.assertTrue(loginPage.getErrorMessageText());
+        Assert.assertTrue(loginPage.isErrorMessagePresent());
     }
 
 }
