@@ -7,20 +7,23 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 
 import java.util.concurrent.TimeUnit;
+
+@Listeners(TestListener.class)
 
 public abstract class BaseTests {
     protected WebDriver driver;
     protected LoginPage loginPage;
     protected ProductsPage productsPage;
     protected ShoppingCartPage shoppingCartPage;
-
     protected CheckOutPage checkOutPage;
-
     protected CheckOutStepTwoPage checkOutStepTwoPage;
-
     protected CheckOutCompletePage checkOutCompletePage;
+    protected InventoryItemPage inventoryItemPage;
+
+
 
     @BeforeClass
     public void setUp() {
@@ -36,6 +39,8 @@ public abstract class BaseTests {
         checkOutPage = new CheckOutPage(driver);
         checkOutStepTwoPage = new CheckOutStepTwoPage(driver);
         checkOutCompletePage = new CheckOutCompletePage(driver);
+        inventoryItemPage = new InventoryItemPage(driver);
+
     }
 
     @BeforeMethod

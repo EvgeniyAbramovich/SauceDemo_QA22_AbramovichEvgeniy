@@ -1,15 +1,13 @@
 package Tests;
 
-import Pages.ShoppingCartPage;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
+public class InventoryItemTests extends BaseTests {
 
-public class ShoppingCartTest extends BaseTests {
-
-    @Test(description = "Positive Checkout Test", groups = "Smoke")
-    public void positiveShoppingCartTest() {
+    @Test(description = "Positive Inventory Item Test", groups = "Smoke")
+    public void positiveInventoryItemTest() {
         String testItemName = "Sauce Labs Backpack";
         String expectedItemPrice = "$29.99";
         String expectedItemDescription = "carry.allTheThings() with the sleek, streamlined Sly Pack that melds " +
@@ -19,11 +17,18 @@ public class ShoppingCartTest extends BaseTests {
         loginPage.setPassword("secret_sauce");
         loginPage.clickLoginButton();
 
-        productsPage.clickAddToCartButton(testItemName);
-        productsPage.clickShoppingCartButton();
+        productsPage.clickItemNameLink(testItemName);
+
+        Assert.assertEquals(inventoryItemPage.getItemPrice(testItemName), expectedItemPrice);
+        Assert.assertEquals(inventoryItemPage.getItemDecription(testItemName), expectedItemDescription);
+        Assert.assertEquals(inventoryItemPage.getItemName(testItemName), testItemName);
+
+        inventoryItemPage.clickAddToCartButton();
+        inventoryItemPage.clickShoppingCartButton();
 
         Assert.assertEquals(shoppingCartPage.getItemPrice(testItemName), expectedItemPrice);
         Assert.assertEquals(shoppingCartPage.getItemDescription(testItemName), expectedItemDescription);
 
     }
+
 }

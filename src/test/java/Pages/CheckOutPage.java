@@ -9,6 +9,7 @@ public class CheckOutPage extends BasePages {
     private final static By ZIP_CODE_INPUT = By.cssSelector("#postal-code");
     private final static By CONTINUE_BUTTON = By.cssSelector("#continue");
     private final static By CANCEL_BUTTON = By.cssSelector("#cancel");
+    private By ERROR_MASSAGE_CONTAINER = By.cssSelector(".error-message-container");
 
 
     public CheckOutPage(WebDriver driver) {
@@ -34,4 +35,10 @@ public class CheckOutPage extends BasePages {
     public void clickCancelButton() {
         driver.findElement(CANCEL_BUTTON).click();
     }
+
+    public boolean isErrorMessagePresent () {
+        return driver.findElement(ERROR_MASSAGE_CONTAINER).isDisplayed();
+    }
+
+
 }

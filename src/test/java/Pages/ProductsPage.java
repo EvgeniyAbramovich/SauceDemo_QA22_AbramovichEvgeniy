@@ -11,6 +11,8 @@ public class ProductsPage extends BasePages {
     private final static By ITEM_PRICE_TEXT = By.cssSelector(".inventory_item_price");
     private final static By ITEM_DESRRIPTION_DESC = By.cssSelector(".inventory_item_desc");
     private final static By ITEM_NAME_LINK = By.cssSelector(".inventory_item_name");
+    private final static By MENU_BUTTON = By.cssSelector("#react-burger-menu-btn");
+    private final static By LOGOUT_BUTTON = By.cssSelector("#logout_sidebar_link");
 
     public ProductsPage(WebDriver driver) {
         super(driver);
@@ -34,8 +36,17 @@ public class ProductsPage extends BasePages {
         driver.findElement(getItemContainerByName(itemName)).findElement(ADD_TO_CART_BUTTON).click();
     }
 
+    public void clickItemNameLink(String itemName) {
+        driver.findElement(ITEM_NAME_LINK).click();
+    }
+
+
     public String getItemPrice(String itemName) {
         return driver.findElement(getItemContainerByName(itemName)).findElement(ITEM_PRICE_TEXT).getText();
+    }
+
+    public String getItemName(String itemName) {
+        return driver.findElement(getItemContainerByName(itemName)).findElement(ITEM_NAME_LINK).getText();
     }
 
     public String getItemDescription(String itemName) {
@@ -48,5 +59,13 @@ public class ProductsPage extends BasePages {
 
     private By getItemContainerByName(String itemName) {
         return By.xpath(String.format(ITEM_CONTAINER_LOCATOR, itemName));
+    }
+
+    public void clickMenuButton() {
+        driver.findElement(MENU_BUTTON).click();
+    }
+
+    public void clickLogoutButton() {
+        driver.findElement(LOGOUT_BUTTON).click();
     }
 }

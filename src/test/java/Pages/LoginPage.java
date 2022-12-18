@@ -8,6 +8,7 @@ public class LoginPage extends BasePages {
     private By passwordInput = By.cssSelector("#password");
     private By logInButton = By.cssSelector("#login-button");
     private By errorMessageContainer = By.cssSelector(".error-message-container");
+    private By BOT_COLUMN = By.cssSelector(".bot_column");
 
 
     public LoginPage(WebDriver driver) {
@@ -30,6 +31,10 @@ public class LoginPage extends BasePages {
 
     public boolean isErrorMessagePresent () {
        return driver.findElement(errorMessageContainer).isDisplayed();
+    }
+
+    public boolean isBotColumnPresent () {
+        return driver.findElement(BOT_COLUMN).isDisplayed();
     }
 
 

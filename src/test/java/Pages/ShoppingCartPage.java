@@ -1,6 +1,7 @@
 package Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 public class ShoppingCartPage extends BasePages {
@@ -44,6 +45,7 @@ public class ShoppingCartPage extends BasePages {
     public String getItemName() {
         return driver.findElement(ITEM_NAME_TEXT).getText();
     }
+
 
 }
 
