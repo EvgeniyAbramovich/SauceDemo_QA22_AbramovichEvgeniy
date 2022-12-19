@@ -37,7 +37,7 @@ public class ProductsPage extends BasePages {
     }
 
     public void clickItemNameLink(String itemName) {
-        driver.findElement(ITEM_NAME_LINK).click();
+        driver.findElement(getItemContainerByName(itemName)).findElement(ITEM_NAME_LINK).click();
     }
 
 
