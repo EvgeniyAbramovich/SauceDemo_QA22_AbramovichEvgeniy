@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 public class CheckOutCompletePage extends BasePages {
     private final static By CHECKOUT_COMPLETE_MESSAGE = By.cssSelector(".complete-header");
     private final static By COMPLETE_TEXT = By.cssSelector(".complete-text");
-
     private final static By BACK_HOME_BUTTON = By.cssSelector(".btn btn_primary btn_small");
 
 

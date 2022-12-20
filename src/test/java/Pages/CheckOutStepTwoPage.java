@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 public class CheckOutStepTwoPage extends BasePages {
     private final static By FINISH_BUTTON = By.cssSelector("#finish");
     private final static By ITEM_PRICE_TEXT = By.cssSelector(".inventory_item_price");
-    private final static By ITEM_DESRRIPTION_DESC = By.cssSelector(".inventory_item_desc");
+    private final static By ITEM_DESCRIPTION_DESC = By.cssSelector(".inventory_item_desc");
     private final static By SUMMARY_SUBTOTAL_LABEL = By.cssSelector(".summary_subtotal_label");
     private final static By SUMMARY_TAX_LABEL = By.cssSelector(".summary_tax_label");
     private final static By SUMMARY_TOTAL_LABEL = By.cssSelector(".summary_total_label");
@@ -36,7 +36,7 @@ public class CheckOutStepTwoPage extends BasePages {
     }
 
     public static String getItemDescription(String testItemName) {
-        return driver.findElement(ITEM_DESRRIPTION_DESC).getText();
+        return driver.findElement(ITEM_DESCRIPTION_DESC).getText();
     }
 
     public static String getItemSummarySubtotalLabel(String testItemName) {
