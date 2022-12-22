@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Smoke Tests" parallel="tests" thread-count="3">
+    <test name="Smoke tests on chrome">
+        <parameter name="browser" value="chrome"></parameter>
+        <classes>
+            <class name="Tests.LoginTests">
+                <methods>
+                    <exclude name="negativeLoginTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Smoke tests on firefox">
+        <parameter name="browser" value="firefox"></parameter>
+        <classes>
+            <class name="Tests.CheckOutTests">
+                <methods>
+                    <include name="positiveCheckoutTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+
+</suite>

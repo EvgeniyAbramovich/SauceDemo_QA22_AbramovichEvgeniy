@@ -8,7 +8,7 @@ import static org.testng.Assert.*;
 
 public class ShoppingCartTest extends BaseTests {
 
-    @Test(description = "Positive Checkout Test", groups = "Smoke")
+    @Test(description = "Positive Shopping Cart Test", groups = {"Smoke"})
     public void positiveShoppingCartTest() {
         String testItemName = "Sauce Labs Backpack";
         String expectedItemPrice = "$29.99";
