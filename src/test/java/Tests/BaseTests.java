@@ -4,10 +4,8 @@ import Pages.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -25,11 +23,21 @@ public abstract class BaseTests {
 
 
 
-    @BeforeClass
-    public void setUp() {
 
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+    @Parameters({"browser"})
+    @BeforeClass (alwaysRun = true)
+    public void setUp(@Optional("chrome") String browserName) throws Exception {
+        if (browserName.equals("chrome")) {
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
+        } else if (browserName.equals("firefox")) {
+            WebDriverManager.firefoxdriver().setup();
+            driver = new FirefoxDriver();
+        } else {
+            throw new Exception("Incorrect browser name");
+        }
+
+
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
@@ -43,7 +51,7 @@ public abstract class BaseTests {
 
     }
 
-    @BeforeMethod
+    @BeforeMethod (alwaysRun = true)
     public void navigate() {
         driver.get("https://www.saucedemo.com/");
     }

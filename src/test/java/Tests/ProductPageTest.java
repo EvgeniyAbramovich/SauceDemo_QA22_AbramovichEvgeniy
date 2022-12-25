@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class ProductPageTest extends BaseTests {
 
-    @Test (retryAnalyzer = Retry.class, description = "Positive Product Test", groups = "Smoke")
+    @Test (retryAnalyzer = Retry.class, description = "Positive Product Test", groups = {"Smoke"})
     public void positiveProductTest() {
         String testItemName = "Sauce Labs Backpack";
         String expectedItemPrice = "$29.99";
@@ -47,7 +47,7 @@ public class ProductPageTest extends BaseTests {
         };
     }
 
-    @Test(dataProvider = "productTest", description = "Product Data Test", groups = "Smoke")
+    @Test(dataProvider = "productTest", description = "Product Data Test", groups = {"Smoke"})
     public void productTest(String itemName, String itemPrice, String itemDescription) {
         loginPage.setUsername("standard_user");
         loginPage.setPassword("secret_sauce");

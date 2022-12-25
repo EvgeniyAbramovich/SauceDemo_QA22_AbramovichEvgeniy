@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class InventoryItemTests extends BaseTests {
 
-    @Test(description = "Positive Inventory Item Test", groups = "Smoke")
+    @Test(description = "Positive Inventory Item Test", groups = {"Smoke"})
     public void positiveInventoryItemTest() {
         String testItemName = "Sauce Labs Backpack";
         String expectedItemPrice = "$29.99";

@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class CheckOutTests extends BaseTests {
 
-    @Test(description = "Positive Checkout Test", groups = "Smoke")
+    @Test(description = "Positive Checkout Test", groups = {"Smoke"})
     public void positiveCheckoutTest() {
         String testItemName = "Sauce Labs Backpack";
         String expectedItemPrice = "$29.99";
@@ -37,7 +37,7 @@ public class CheckOutTests extends BaseTests {
         Assert.assertTrue(checkOutCompletePage.completeTextIsPresent());
 
     }
-    @Test(description = "Negative Checkout Test", groups = "Regression")
+    @Test(description = "Negative Checkout Test", groups = {"Regression"})
     public void negativeCheckoutTest() {
         String testItemName = "Sauce Labs Backpack";
 
