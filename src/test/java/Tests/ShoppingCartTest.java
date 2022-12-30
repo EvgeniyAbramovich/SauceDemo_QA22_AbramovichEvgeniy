@@ -26,4 +26,24 @@ public class ShoppingCartTest extends BaseTests {
         Assert.assertEquals(shoppingCartPage.getItemDescription(testItemName), expectedItemDescription);
 
     }
+
+    @Test(description = "Remove Test", groups = {"Smoke"})
+    public void removeTest() {
+        String testItemName = "Sauce Labs Backpack";
+        String expectedItemPrice = "$29.99";
+        String expectedItemDescription = "carry.allTheThings() with the sleek, streamlined Sly Pack that melds " +
+                "uncompromising style with unequaled laptop and tablet protection.";
+
+        loginPage.setUsername("standard_user");
+        loginPage.setPassword("secret_sauce");
+        loginPage.clickLoginButton();
+
+        productsPage.clickAddToCartButton(testItemName);
+        productsPage.clickShoppingCartButton();
+
+        shoppingCartPage.clickRemoveButton();
+        Assert.assertFalse(shoppingCartPage.addedItemIsPresent());
+
+    }
+
 }

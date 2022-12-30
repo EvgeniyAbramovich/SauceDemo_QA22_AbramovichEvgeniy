@@ -3,6 +3,8 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class ProductsPage extends BasePages {
     private final static By SHOPPING_CART_BUTTON = By.cssSelector(".shopping_cart_link");
@@ -13,6 +15,7 @@ public class ProductsPage extends BasePages {
     private final static By ITEM_NAME_LINK = By.cssSelector(".inventory_item_name");
     private final static By MENU_BUTTON = By.cssSelector("#react-burger-menu-btn");
     private final static By LOGOUT_BUTTON = By.cssSelector("#logout_sidebar_link");
+    private final static By PRODUCT_SORT_CONTAINER = By.cssSelector(".product_sort_container");
 
     public ProductsPage(WebDriver driver) {
         super(driver);
@@ -67,5 +70,12 @@ public class ProductsPage extends BasePages {
 
     public void clickLogoutButton() {
         driver.findElement(LOGOUT_BUTTON).click();
+    }
+
+    public void selectSortingOrderOption(String optionName) {
+        Select select = new Select((WebElement) PRODUCT_SORT_CONTAINER);
+        select.selectByVisibleText(optionName);
+
+
     }
 }

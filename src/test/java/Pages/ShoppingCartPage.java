@@ -14,6 +14,7 @@ public class ShoppingCartPage extends BasePages {
     private final static By ITEM_NAME_LINK = By.cssSelector(".inventory_item_name");
     private final static By ITEM_NAME_TEXT = By.cssSelector(".inventory_item_name");
 
+
     public ShoppingCartPage(WebDriver driver) {
         super(driver);
     }
@@ -44,6 +45,16 @@ public class ShoppingCartPage extends BasePages {
 
     public String getItemName() {
         return driver.findElement(ITEM_NAME_TEXT).getText();
+    }
+
+    public boolean addedItemIsPresent () {
+        try {
+            driver.findElement(ITEM_NAME_TEXT);
+        }
+        catch (NoSuchElementException ex) {
+            return false;
+        }
+        return true;
     }
 
 

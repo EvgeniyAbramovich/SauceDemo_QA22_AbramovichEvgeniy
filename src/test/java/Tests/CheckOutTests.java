@@ -1,5 +1,6 @@
 package Tests;
 
+import io.qameta.allure.Attachment;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
@@ -37,6 +38,7 @@ public class CheckOutTests extends BaseTests {
         Assert.assertTrue(checkOutCompletePage.completeTextIsPresent());
 
     }
+
     @Test(description = "Negative Checkout Test", groups = {"Regression"})
     public void negativeCheckoutTest() {
         String testItemName = "Sauce Labs Backpack";
