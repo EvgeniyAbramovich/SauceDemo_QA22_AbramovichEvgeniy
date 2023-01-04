@@ -6,9 +6,12 @@ import org.testng.ITestListener;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class ProductPageTest extends BaseTests {
 
-    @Test (retryAnalyzer = Retry.class, description = "Positive Product Test", groups = {"Smoke"})
+    @Test(retryAnalyzer = Retry.class, description = "Positive Product Test", groups = {"Smoke"})
     public void positiveProductTest() {
         String testItemName = "Sauce Labs Backpack";
         String expectedItemPrice = "$29.99";

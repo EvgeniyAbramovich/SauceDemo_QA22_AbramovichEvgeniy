@@ -5,6 +5,7 @@
         <parameter name="browser" value="chrome"></parameter>
         <classes>
             <class name="Tests.InventoryItemTests"/>
+
             </classes>
     </test>
 
@@ -13,7 +14,7 @@
         <classes>
             <class name="Tests.ProductPageTest"/>
             <class name="Tests.ShoppingCartTest"/>
-        </classes>
+            </classes>
     </test>
 
 
