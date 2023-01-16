@@ -13,18 +13,13 @@ public class InventoryItemTests extends BaseTests {
         String expectedItemDescription = "carry.allTheThings() with the sleek, streamlined Sly Pack that melds " +
                 "uncompromising style with unequaled laptop and tablet protection.";
 
-        loginPage.setUsername("standard_user");
-        loginPage.setPassword("secret_sauce");
-        loginPage.clickLoginButton();
-
-        productsPage.clickItemNameLink(testItemName);
+        loginPage.setUsername("standard_user").setPassword("secret_sauce").clickLoginButton().clickItemNameLink(testItemName);
 
         Assert.assertEquals(inventoryItemPage.getItemPrice(testItemName), expectedItemPrice);
         Assert.assertEquals(inventoryItemPage.getItemDecription(testItemName), expectedItemDescription);
         Assert.assertEquals(inventoryItemPage.getItemName(testItemName), testItemName);
 
-        inventoryItemPage.clickAddToCartButton();
-        inventoryItemPage.clickShoppingCartButton();
+        inventoryItemPage.clickAddToCartButton().clickShoppingCartButton();
 
         Assert.assertEquals(shoppingCartPage.getItemPrice(testItemName), expectedItemPrice);
         Assert.assertEquals(shoppingCartPage.getItemDescription(testItemName), expectedItemDescription);

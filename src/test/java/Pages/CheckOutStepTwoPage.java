@@ -1,57 +1,76 @@
 package Pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class CheckOutStepTwoPage extends BasePages {
-    private final static By FINISH_BUTTON = By.cssSelector("#finish");
-    private final static By ITEM_PRICE_TEXT = By.cssSelector(".inventory_item_price");
-    private final static By ITEM_DESCRIPTION_DESC = By.cssSelector(".inventory_item_desc");
-    private final static By SUMMARY_SUBTOTAL_LABEL = By.cssSelector(".summary_subtotal_label");
-    private final static By SUMMARY_TAX_LABEL = By.cssSelector(".summary_tax_label");
-    private final static By SUMMARY_TOTAL_LABEL = By.cssSelector(".summary_total_label");
-    private final static By CANCEL_BUTTON = By.cssSelector("#cancel");
 
+    @FindBy(css = "#finish")
+    private WebElement FINISH_BUTTON;
+    @FindBy(css = ".inventory_item_price")
+    private static WebElement ITEM_PRICE_TEXT;
+    @FindBy(css = ".inventory_item_desc")
+    private static WebElement ITEM_DESCRIPTION_DESC;
+    @FindBy(css = ".summary_subtotal_label")
+    private static WebElement SUMMARY_SUBTOTAL_LABEL;
+    @FindBy(css = ".summary_tax_label")
+    private static WebElement SUMMARY_TAX_LABEL;
+    @FindBy(css = ".summary_total_label")
+    private static WebElement SUMMARY_TOTAL_LABEL;
+    @FindBy(css = "#cancel")
+    private WebElement CANCEL_BUTTON;
+
+
+    @Override
+    public boolean isPageOpened() {
+        FINISH_BUTTON.isDisplayed();
+        return false;
+    }
 
     public CheckOutStepTwoPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
 
     public boolean isFinishButtonPresent() {
         try {
-            driver.findElement(FINISH_BUTTON);
+            FINISH_BUTTON.isDisplayed();
         } catch (NoSuchElementException ex) {
             return false;
         }
         return true;
     }
 
-    public void clickFinishButton() {
-        driver.findElement(FINISH_BUTTON).click();
+    public CheckOutCompletePage clickFinishButton() {
+        FINISH_BUTTON.click();
+        return new CheckOutCompletePage(driver);
     }
 
     public static String getItemPrice(String testItemName) {
-        return driver.findElement(ITEM_PRICE_TEXT).getText();
+        return ITEM_PRICE_TEXT.getText();
     }
 
     public static String getItemDescription(String testItemName) {
-        return driver.findElement(ITEM_DESCRIPTION_DESC).getText();
+        return ITEM_DESCRIPTION_DESC.getText();
     }
 
     public static String getItemSummarySubtotalLabel(String testItemName) {
-        return driver.findElement(SUMMARY_SUBTOTAL_LABEL).getText();
+        return SUMMARY_SUBTOTAL_LABEL.getText();
     }
 
     public static String getItemSummaryTaxLabel (String testItemName) {
-        return driver.findElement(SUMMARY_TAX_LABEL).getText();
+        return SUMMARY_TAX_LABEL.getText();
     }
 
     public static String getItemSummaryTotalLabel (String testItemName) {
-        return driver.findElement(SUMMARY_TOTAL_LABEL).getText();
+        return SUMMARY_TOTAL_LABEL.getText();
     }
 
-    public void clickCancelButton() {
-        driver.findElement(CANCEL_BUTTON).click();
+    public ProductsPage clickCancelButton() {
+        CANCEL_BUTTON.click();
+        return new ProductsPage(driver);
     }
 }

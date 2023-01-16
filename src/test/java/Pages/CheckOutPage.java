@@ -1,43 +1,65 @@
 package Pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class CheckOutPage extends BasePages {
-    private final static By FIRST_NAME_INPUT = By.cssSelector("#first-name");
-    private final static By LAST_NAME_INPUT = By.cssSelector("#last-name");
-    private final static By ZIP_CODE_INPUT = By.cssSelector("#postal-code");
-    private final static By CONTINUE_BUTTON = By.cssSelector("#continue");
-    private final static By CANCEL_BUTTON = By.cssSelector("#cancel");
-    private By ERROR_MASSAGE_CONTAINER = By.cssSelector(".error-message-container");
 
+    @FindBy(css = "#first-name")
+    private WebElement FIRST_NAME_INPUT;
+    @FindBy(css = "#last-name")
+    private WebElement LAST_NAME_INPUT;
+    @FindBy(css = "#postal-code")
+    private WebElement ZIP_CODE_INPUT;
+    @FindBy(css = "#continue")
+    private WebElement CONTINUE_BUTTON;
+    @FindBy(css = "#cancel")
+    private WebElement CANCEL_BUTTON;
+    @FindBy(css = ".error-message-container")
+    private WebElement ERROR_MASSAGE_CONTAINER;
+
+
+    @Override
+    public boolean isPageOpened() {
+        CONTINUE_BUTTON.isDisplayed();
+        return false;
+    }
 
     public CheckOutPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
 
-    public void setFirstNameInput(String firstName) {
-        driver.findElement(FIRST_NAME_INPUT).sendKeys(firstName);
+    public CheckOutPage setFirstNameInput(String firstName) {
+        FIRST_NAME_INPUT.sendKeys(firstName);
+        return this;
     }
 
-    public void setLastNameInput(String lastName) {
-        driver.findElement(LAST_NAME_INPUT).sendKeys(lastName);
+    public CheckOutPage setLastNameInput(String lastName) {
+        LAST_NAME_INPUT.sendKeys(lastName);
+        return this;
     }
 
-    public void setZipCodeInput (String zipCode) {
-        driver.findElement(ZIP_CODE_INPUT).sendKeys(zipCode);
+    public CheckOutPage setZipCodeInput (String zipCode) {
+        ZIP_CODE_INPUT.sendKeys(zipCode);
+        return this;
     }
 
-    public void clickContinueButton() {
-        driver.findElement(CONTINUE_BUTTON).click();
+    public CheckOutStepTwoPage clickContinueButton() {
+        CONTINUE_BUTTON.click();
+        return new CheckOutStepTwoPage(driver);
+
     }
 
-    public void clickCancelButton() {
-        driver.findElement(CANCEL_BUTTON).click();
+    public ShoppingCartPage clickCancelButton() {
+        CANCEL_BUTTON.click();
+        return new ShoppingCartPage(driver);
     }
 
     public boolean isErrorMessagePresent () {
-        return driver.findElement(ERROR_MASSAGE_CONTAINER).isDisplayed();
+        return ERROR_MASSAGE_CONTAINER.isDisplayed();
     }
 
 

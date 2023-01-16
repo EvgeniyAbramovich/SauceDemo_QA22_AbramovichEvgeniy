@@ -1,40 +1,56 @@
 package Pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends BasePages {
-    private final static By usernameInput = By.cssSelector("#user-name");
-    private By passwordInput = By.cssSelector("#password");
-    private By logInButton = By.cssSelector("#login-button");
-    private By errorMessageContainer = By.cssSelector(".error-message-container");
-    private By BOT_COLUMN = By.cssSelector(".bot_column");
 
+    @FindBy(css = "#user-name")
+    private WebElement usernameInput;
+    @FindBy(css = "#password")
+    private WebElement passwordInput;
+    @FindBy(css = "#login-button")
+    private WebElement logInButton;
+    @FindBy(css = ".error-message-container")
+    private WebElement errorMessageContainer;
+    @FindBy(css = ".bot_column")
+    private WebElement BOT_COLUMN;
+
+
+    @Override
+    public boolean isPageOpened() {
+        logInButton.isDisplayed();
+        return false;
+    }
 
     public LoginPage(WebDriver driver) {
         super(driver);
-
+        PageFactory.initElements(driver, this);
     }
 
-    public void clickLoginButton() {
-
-        driver.findElement(logInButton).click();
+    public ProductsPage clickLoginButton() {
+        logInButton.click();
+        return new ProductsPage(driver);
     }
 
-    public void setUsername (String username) {
-        driver.findElement(usernameInput).sendKeys(username);
+    public LoginPage setUsername (String username) {
+        usernameInput.sendKeys(username);
+        return this;
     }
 
-    public void setPassword (String password) {
-        driver.findElement(passwordInput).sendKeys(password);
+    public LoginPage setPassword (String password) {
+        passwordInput.sendKeys(password);
+        return this;
     }
 
     public boolean isErrorMessagePresent () {
-       return driver.findElement(errorMessageContainer).isDisplayed();
+      return errorMessageContainer.isDisplayed();
     }
 
     public boolean isBotColumnPresent () {
-        return driver.findElement(BOT_COLUMN).isDisplayed();
+        return BOT_COLUMN.isDisplayed();
     }
 
 
