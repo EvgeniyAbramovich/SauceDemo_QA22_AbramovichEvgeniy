@@ -25,9 +25,9 @@ public class ShoppingCartPage extends BasePages {
 
 
     @Override
-    public boolean isPageOpened() {
+    public BasePages isPageOpened() {
         CHECKOUT_BUTTON.isDisplayed();
-        return false;
+        return this;
     }
 
     public ShoppingCartPage(WebDriver driver) {

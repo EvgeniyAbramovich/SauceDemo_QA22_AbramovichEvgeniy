@@ -25,9 +25,9 @@ public class ProductsPage extends BasePages {
     private WebElement PRODUCT_SORT_CONTAINER;
 
     @Override
-    public boolean isPageOpened() {
+    public BasePages isPageOpened() {
         PRODUCT_SORT_CONTAINER.isDisplayed();
-        return false;
+        return this;
     }
 
     public ProductsPage(WebDriver driver) {
