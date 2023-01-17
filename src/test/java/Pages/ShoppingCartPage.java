@@ -1,55 +1,74 @@
 package Pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class ShoppingCartPage extends BasePages {
 
-    private final static By REMOVE_BUTTON = By.xpath("//button[contains(@id,'remove')]");
-    private final static By CHECKOUT_BUTTON = By.cssSelector("#checkout");
-    private final static By CONTINUE_SHOPPING_BUTTON = By.cssSelector("#continue-shopping");
-    private final static By ITEM_PRICE_TEXT = By.cssSelector(".inventory_item_price");
-    private final static By ITEM_DESRRIPTION_DESC = By.cssSelector(".inventory_item_desc");
-    private final static By ITEM_NAME_LINK = By.cssSelector(".inventory_item_name");
-    private final static By ITEM_NAME_TEXT = By.cssSelector(".inventory_item_name");
+    @FindBy(xpath = "//button[contains(@id,'remove')]")
+    private WebElement REMOVE_BUTTON;
+    @FindBy(css = "#checkout")
+    private WebElement CHECKOUT_BUTTON;
+    @FindBy(css = "#continue-shopping")
+    private WebElement CONTINUE_SHOPPING_BUTTON;
+    @FindBy(css = ".inventory_item_price")
+    private static WebElement ITEM_PRICE_TEXT;
+    @FindBy(css = ".inventory_item_desc")
+    private static WebElement ITEM_DESCRIPTION_DESC;
+    @FindBy(css = ".inventory_item_name")
+    private WebElement ITEM_NAME_LINK;
+    @FindBy(css = ".inventory_item_name")
+    private WebElement ITEM_NAME_TEXT;
 
+
+    @Override
+    public boolean isPageOpened() {
+       return CHECKOUT_BUTTON.isDisplayed();
+    }
 
     public ShoppingCartPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
 
-    public void clickRemoveButton() {
-        driver.findElement(REMOVE_BUTTON).click();
+    public ShoppingCartPage clickRemoveButton() {
+        REMOVE_BUTTON.click();
+        return this;
     }
 
-    public void clickCheckOutButton() {
-        driver.findElement(CHECKOUT_BUTTON).click();
+    public CheckOutPage clickCheckOutButton() {
+        CHECKOUT_BUTTON.click();
+        return new CheckOutPage(driver);
     }
 
-    public void clickContinueShoppingButton() {
-        driver.findElement(CONTINUE_SHOPPING_BUTTON).click();
+    public ProductsPage clickContinueShoppingButton() {
+        CONTINUE_SHOPPING_BUTTON.click();
+        return new ProductsPage(driver);
     }
 
     public static String getItemPrice(String testItemName) {
-        return driver.findElement(ITEM_PRICE_TEXT).getText();
+        return ITEM_PRICE_TEXT.getText();
     }
 
     public static String getItemDescription(String testItemName) {
-        return driver.findElement(ITEM_DESRRIPTION_DESC).getText();
+        return ITEM_DESCRIPTION_DESC.getText();
     }
 
-    public void openItem() {
-        driver.findElement(ITEM_NAME_LINK).click();
+    public InventoryItemPage openItem() {
+        ITEM_NAME_LINK.click();
+        return new InventoryItemPage(driver);
     }
 
     public String getItemName() {
-        return driver.findElement(ITEM_NAME_TEXT).getText();
+        return ITEM_NAME_TEXT.getText();
     }
 
     public boolean addedItemIsPresent () {
         try {
-            driver.findElement(ITEM_NAME_TEXT);
+            ITEM_NAME_TEXT.isDisplayed();
         }
         catch (NoSuchElementException ex) {
             return false;

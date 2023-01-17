@@ -15,12 +15,10 @@ public class ShoppingCartTest extends BaseTests {
         String expectedItemDescription = "carry.allTheThings() with the sleek, streamlined Sly Pack that melds " +
                 "uncompromising style with unequaled laptop and tablet protection.";
 
-        loginPage.setUsername("standard_user");
-        loginPage.setPassword("secret_sauce");
-        loginPage.clickLoginButton();
+        loginPage.setUsername("standard_user").setPassword("secret_sauce").clickLoginButton().isPageOpened();
 
         productsPage.clickAddToCartButton(testItemName);
-        productsPage.clickShoppingCartButton();
+        productsPage.clickShoppingCartButton().isPageOpened();
 
         Assert.assertEquals(shoppingCartPage.getItemPrice(testItemName), expectedItemPrice);
         Assert.assertEquals(shoppingCartPage.getItemDescription(testItemName), expectedItemDescription);
@@ -34,9 +32,7 @@ public class ShoppingCartTest extends BaseTests {
         String expectedItemDescription = "carry.allTheThings() with the sleek, streamlined Sly Pack that melds " +
                 "uncompromising style with unequaled laptop and tablet protection.";
 
-        loginPage.setUsername("standard_user");
-        loginPage.setPassword("secret_sauce");
-        loginPage.clickLoginButton();
+        loginPage.setUsername("standard_user").setPassword("secret_sauce").clickLoginButton().isPageOpened();
 
         productsPage.clickAddToCartButton(testItemName);
         productsPage.clickShoppingCartButton();

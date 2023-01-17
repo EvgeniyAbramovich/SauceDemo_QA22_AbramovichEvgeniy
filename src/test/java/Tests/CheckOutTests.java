@@ -14,19 +14,10 @@ public class CheckOutTests extends BaseTests {
         String expectedItemDescription = "carry.allTheThings() with the sleek, streamlined Sly Pack that melds " +
                 "uncompromising style with unequaled laptop and tablet protection.";
 
-        loginPage.setUsername("standard_user");
-        loginPage.setPassword("secret_sauce");
-        loginPage.clickLoginButton();
-
-        productsPage.clickAddToCartButton(testItemName);
-        productsPage.clickShoppingCartButton();
-
-        shoppingCartPage.clickCheckOutButton();
-
-        checkOutPage.setFirstNameInput("Evgeniy");
-        checkOutPage.setLastNameInput("Abramovich");
-        checkOutPage.setZipCodeInput("12345");
-        checkOutPage.clickContinueButton();
+        loginPage.setUsername("standard_user").setPassword("secret_sauce").clickLoginButton().
+                clickAddToCartButton(testItemName);
+        productsPage.clickShoppingCartButton().clickCheckOutButton().setFirstNameInput("Evgeniy").
+                setLastNameInput("Abramovich").setZipCodeInput("12345").clickContinueButton().isPageOpened();
 
         Assert.assertTrue(checkOutStepTwoPage.isFinishButtonPresent());
         Assert.assertEquals(checkOutStepTwoPage.getItemPrice(testItemName), expectedItemPrice);
@@ -43,18 +34,10 @@ public class CheckOutTests extends BaseTests {
     public void negativeCheckoutTest() {
         String testItemName = "Sauce Labs Backpack";
 
-        loginPage.setUsername("standard_user");
-        loginPage.setPassword("secret_sauce");
-        loginPage.clickLoginButton();
-
-        productsPage.clickAddToCartButton(testItemName);
-        productsPage.clickShoppingCartButton();
-
-        shoppingCartPage.clickCheckOutButton();
-
-        checkOutPage.setFirstNameInput("Evgeniy");
-        checkOutPage.setZipCodeInput("12345");
-        checkOutPage.clickContinueButton();
+        loginPage.setUsername("standard_user").setPassword("secret_sauce").clickLoginButton().
+                clickAddToCartButton(testItemName);
+        productsPage.clickShoppingCartButton().clickCheckOutButton().setFirstNameInput("Evgeniy").setZipCodeInput("12345").
+                clickContinueButton();
 
         Assert.assertTrue(checkOutPage.isErrorMessagePresent());
 

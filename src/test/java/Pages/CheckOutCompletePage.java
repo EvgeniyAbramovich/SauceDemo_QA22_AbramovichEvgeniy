@@ -1,28 +1,42 @@
 package Pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class CheckOutCompletePage extends BasePages {
-    private final static By CHECKOUT_COMPLETE_MESSAGE = By.cssSelector(".complete-header");
-    private final static By COMPLETE_TEXT = By.cssSelector(".complete-text");
-    private final static By BACK_HOME_BUTTON = By.cssSelector(".btn btn_primary btn_small");
 
+    @FindBy(css = ".complete-header")
+    private WebElement CHECKOUT_COMPLETE_MESSAGE;
+    @FindBy(css = ".complete-text")
+    private WebElement COMPLETE_TEXT;
+    @FindBy (css = ".btn btn_primary btn_small")
+    private WebElement BACK_HOME_BUTTON;
+
+
+    @Override
+    public boolean isPageOpened() {
+        return CHECKOUT_COMPLETE_MESSAGE.isDisplayed();
+    }
 
     public CheckOutCompletePage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
 
     public boolean checkOutCompleteMessageIsPresent () {
-        return driver.findElement(CHECKOUT_COMPLETE_MESSAGE).isDisplayed();
+        return CHECKOUT_COMPLETE_MESSAGE.isDisplayed();
         }
 
     public boolean completeTextIsPresent () {
-        return driver.findElement(COMPLETE_TEXT).isDisplayed();
+        return COMPLETE_TEXT.isDisplayed();
         }
 
 
-    public void clickBackHomeMessage () {
-        driver.findElement(BACK_HOME_BUTTON).click();
+    public CheckOutCompletePage clickBackHomeMessage () {
+        BACK_HOME_BUTTON.click();
+        return this;
+
     }
 }

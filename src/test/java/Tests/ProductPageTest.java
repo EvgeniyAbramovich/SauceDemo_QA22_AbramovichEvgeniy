@@ -19,9 +19,7 @@ public class ProductPageTest extends BaseTests {
                 "uncompromising style with unequaled laptop and tablet protection.";
 
 
-        loginPage.setUsername("standard_user");
-        loginPage.setPassword("secret_sauce");
-        loginPage.clickLoginButton();
+        loginPage.setUsername("standard_user").setPassword("secret_sauce").clickLoginButton().isPageOpened();
 
         Assert.assertEquals(productsPage.getItemPrice(testItemName), expectedItemPrice);
         Assert.assertEquals(productsPage.getItemDescription(testItemName), expectedItemDescription);
@@ -52,9 +50,7 @@ public class ProductPageTest extends BaseTests {
 
     @Test(dataProvider = "productTest", description = "Product Data Test", groups = {"Smoke"})
     public void productTest(String itemName, String itemPrice, String itemDescription) {
-        loginPage.setUsername("standard_user");
-        loginPage.setPassword("secret_sauce");
-        loginPage.clickLoginButton();
+        loginPage.setUsername("standard_user").setPassword("secret_sauce").clickLoginButton().isPageOpened();
 
         Assert.assertEquals(productsPage.getItemName(itemName), itemName);
         Assert.assertEquals(productsPage.getItemPrice(itemName), itemPrice);
