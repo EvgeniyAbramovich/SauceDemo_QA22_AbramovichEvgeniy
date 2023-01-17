@@ -22,9 +22,9 @@ public class CheckOutPage extends BasePages {
 
 
     @Override
-    public BasePages isPageOpened() {
-        CONTINUE_BUTTON.isDisplayed();
-        return this;
+    public boolean isPageOpened() {
+       return CONTINUE_BUTTON.isDisplayed();
+
     }
 
     public CheckOutPage(WebDriver driver) {

@@ -16,9 +16,8 @@ public class CheckOutCompletePage extends BasePages {
 
 
     @Override
-    public BasePages isPageOpened() {
-        CHECKOUT_COMPLETE_MESSAGE.isDisplayed();
-        return this;
+    public boolean isPageOpened() {
+        return CHECKOUT_COMPLETE_MESSAGE.isDisplayed();
     }
 
     public CheckOutCompletePage(WebDriver driver) {

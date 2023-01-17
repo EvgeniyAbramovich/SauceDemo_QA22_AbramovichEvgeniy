@@ -20,9 +20,8 @@ public class LoginPage extends BasePages {
 
 
     @Override
-    public BasePages isPageOpened() {
-        logInButton.isDisplayed();
-        return this;
+    public boolean isPageOpened() {
+        return logInButton.isDisplayed();
     }
 
     public LoginPage(WebDriver driver) {

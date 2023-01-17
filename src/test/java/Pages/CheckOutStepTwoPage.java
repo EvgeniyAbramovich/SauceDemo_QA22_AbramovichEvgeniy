@@ -25,9 +25,8 @@ public class CheckOutStepTwoPage extends BasePages {
 
 
     @Override
-    public BasePages isPageOpened() {
-        FINISH_BUTTON.isDisplayed();
-        return this;
+    public boolean isPageOpened() {
+        return FINISH_BUTTON.isDisplayed();
     }
 
     public CheckOutStepTwoPage(WebDriver driver) {

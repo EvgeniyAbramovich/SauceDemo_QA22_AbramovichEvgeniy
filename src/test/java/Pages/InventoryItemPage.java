@@ -22,9 +22,8 @@ public class InventoryItemPage extends BasePages{
 
 
     @Override
-    public BasePages isPageOpened() {
-        ADD_TO_CART_BUTTON.isDisplayed();
-        return this;
+    public boolean isPageOpened() {
+       return ADD_TO_CART_BUTTON.isDisplayed();
     }
 
     public InventoryItemPage(WebDriver driver) {
