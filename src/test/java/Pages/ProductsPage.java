@@ -36,9 +36,7 @@ public class ProductsPage extends BasePages {
     }
 
     public boolean isShoppingCartButtonPresent() {
-        log.info("Shopping Cart Button is Present");
-        log.error("Shopping Cart Button isn't Present");
-        try {
+       try {
             SHOPPING_CART_BUTTON.isDisplayed();
         } catch (NoSuchElementException ex) {
             return false;
@@ -101,7 +99,7 @@ public class ProductsPage extends BasePages {
     }
 
     public void selectSortingOrderOption(String optionName) {
-        log.info("Selecting Sorting Order Option '%s'",optionName);
+        log.info("Selecting Sorting Order Option {}",optionName);
         Select select = new Select((WebElement) PRODUCT_SORT_CONTAINER);
         select.selectByVisibleText(optionName);
 

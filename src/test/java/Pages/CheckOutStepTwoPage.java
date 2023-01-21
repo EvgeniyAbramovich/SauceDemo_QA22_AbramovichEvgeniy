@@ -36,8 +36,6 @@ public class CheckOutStepTwoPage extends BasePages {
     }
 
     public boolean isFinishButtonPresent() {
-        log.info("Finish Button is Present");
-        log.error("Finish Button isn't Present");
         try {
             FINISH_BUTTON.isDisplayed();
         } catch (NoSuchElementException ex) {
@@ -53,27 +51,27 @@ public class CheckOutStepTwoPage extends BasePages {
     }
 
     public static String getItemPrice(String testItemName) {
-        log.info("Getting Item Price = '%s'",testItemName);
+        log.info("Getting Item Price = {}",testItemName);
         return ITEM_PRICE_TEXT.getText();
     }
 
     public static String getItemDescription(String testItemName) {
-        log.info("Getting Item Price = '%s'",testItemName);
+        log.info("Getting Item Price = {}",testItemName);
         return ITEM_DESCRIPTION_DESC.getText();
     }
 
     public static String getItemSummarySubtotalLabel(String testItemName) {
-        log.info("Getting Item Summary Subtotal Label = '%s'",testItemName);
+        log.info("Getting Item Summary Subtotal Label = {}",testItemName);
         return SUMMARY_SUBTOTAL_LABEL.getText();
     }
 
     public static String getItemSummaryTaxLabel (String testItemName) {
-        log.info("Getting Item Summary Tax Label = '%s'",testItemName);
+        log.info("Getting Item Summary Tax Label = {}",testItemName);
         return SUMMARY_TAX_LABEL.getText();
     }
 
     public static String getItemSummaryTotalLabel (String testItemName) {
-        log.info("Getting Item Summary Total Label = '%s'",testItemName);
+        log.info("Getting Item Summary Total Label = {}",testItemName);
         return SUMMARY_TOTAL_LABEL.getText();
     }
 

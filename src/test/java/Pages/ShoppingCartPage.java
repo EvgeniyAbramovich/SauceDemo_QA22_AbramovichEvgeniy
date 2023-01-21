@@ -54,12 +54,12 @@ public class ShoppingCartPage extends BasePages {
     }
 
     public static String getItemPrice(String testItemName) {
-        log.info("Getting Item Price = '%s'",testItemName);
+        log.info("Getting Item Price = {}",testItemName);
         return ITEM_PRICE_TEXT.getText();
     }
 
     public static String getItemDescription(String testItemName) {
-        log.info("Getting Item Description = '%s'",testItemName);
+        log.info("Getting Item Description = {}",testItemName);
         return ITEM_DESCRIPTION_DESC.getText();
     }
 
@@ -75,8 +75,6 @@ public class ShoppingCartPage extends BasePages {
     }
 
     public boolean addedItemIsPresent () {
-        log.info("Added Item is Present");
-        log.error("Added Item isn't Present");
         try {
             ITEM_NAME_TEXT.isDisplayed();
         }

@@ -34,19 +34,19 @@ public class CheckOutPage extends BasePages {
     }
 
     public CheckOutPage setFirstNameInput(String firstName) {
-        log.info("Setting First Name = '%s'", firstName);
+        log.info("Setting First Name = {}", firstName);
         FIRST_NAME_INPUT.sendKeys(firstName);
         return this;
     }
 
     public CheckOutPage setLastNameInput(String lastName) {
-        log.info("Setting Last Name = '%s'", lastName);
+        log.info("Setting Last Name = {}", lastName);
         LAST_NAME_INPUT.sendKeys(lastName);
         return this;
     }
 
     public CheckOutPage setZipCodeInput (String zipCode) {
-        log.info("Setting Zip Code = '%s'", zipCode);
+        log.info("Setting Zip Code = {}", zipCode);
         ZIP_CODE_INPUT.sendKeys(zipCode);
         return this;
     }
@@ -65,8 +65,6 @@ public class CheckOutPage extends BasePages {
     }
 
     public boolean isErrorMessagePresent () {
-        log.info("Error Message is Displayed");
-        log.error("Error Message isn't Displayed");
         return ERROR_MASSAGE_CONTAINER.isDisplayed();
     }
 

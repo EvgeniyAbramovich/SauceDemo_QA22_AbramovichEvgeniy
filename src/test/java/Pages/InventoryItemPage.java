@@ -45,17 +45,17 @@ public class InventoryItemPage extends BasePages{
     }
 
     public static String getItemName(String testItemName) {
-        log.info("Getting Item Name = '%s'",testItemName);
+        log.info("Getting Item Name = {}",testItemName);
         return ITEM_NAME_TEXT.getText();
     }
 
     public static String getItemDescription(String testItemName) {
-        log.info("Getting Item Description = '%s'",testItemName);
+        log.info("Getting Item Description = {}",testItemName);
         return ITEM_DESCRIPTION_TEXT.getText();
     }
 
     public static String getItemPrice(String testItemName) {
-        log.info("Getting Item Price = '%s'",testItemName);
+        log.info("Getting Item Price = {}",testItemName);
         return ITEM_PRICE_TEXT.getText();
      }
 

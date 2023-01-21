@@ -37,26 +37,22 @@ public class LoginPage extends BasePages {
     }
 
     public LoginPage setUsername (String username) {
-        log.info("Setting Username = '%s'",username);
+        log.info("Setting Username = {}",username);
         usernameInput.sendKeys(username);
         return this;
     }
 
     public LoginPage setPassword (String password) {
-        log.info("Setting Password = '%s'",password);
+        log.info("Setting Password = {}",password);
         passwordInput.sendKeys(password);
         return this;
     }
 
     public boolean isErrorMessagePresent () {
-        log.info("Error Message is Displayed");
-        log.error("Error Message isn't Displayed");
         return errorMessageContainer.isDisplayed();
     }
 
     public boolean isBotColumnPresent () {
-        log.info("Bot Column is Displayed");
-        log.error("Bot Column isn't Displayed");
         return BOT_COLUMN.isDisplayed();
     }
 

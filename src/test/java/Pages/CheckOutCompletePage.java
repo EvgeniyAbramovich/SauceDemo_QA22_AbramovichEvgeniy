@@ -27,14 +27,10 @@ public class CheckOutCompletePage extends BasePages {
     }
 
     public boolean checkOutCompleteMessageIsPresent () {
-        log.info("Complete Message is Displayed");
-        log.error("Complete Message isn't Displayed");
         return CHECKOUT_COMPLETE_MESSAGE.isDisplayed();
         }
 
     public boolean completeTextIsPresent () {
-        log.info("Complete Text is Displayed");
-        log.error("Complete Text isn't Displayed");
         return COMPLETE_TEXT.isDisplayed();
         }
 
