@@ -1,10 +1,11 @@
 package Pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
+@Log4j2
 public class InventoryItemPage extends BasePages{
 
     @FindBy(xpath = "//button[text()='Add to cart']")
@@ -32,28 +33,34 @@ public class InventoryItemPage extends BasePages{
     }
 
     public InventoryItemPage clickAddToCartButton() {
+        log.info("Clicking AddToCart Button");
         ADD_TO_CART_BUTTON.click();
         return this;
     }
 
     public ProductsPage clickBackToProductsButton() {
+        log.info("Clicking BackToProduct Button");
         BACK_TO_PRODUCTS_BUTTON.click();
         return new ProductsPage(driver);
     }
 
     public static String getItemName(String testItemName) {
+        log.info("Getting Item Name = '%s'",testItemName);
         return ITEM_NAME_TEXT.getText();
     }
 
-    public static String getItemDecription(String testItemName) {
+    public static String getItemDescription(String testItemName) {
+        log.info("Getting Item Description = '%s'",testItemName);
         return ITEM_DESCRIPTION_TEXT.getText();
     }
 
     public static String getItemPrice(String testItemName) {
+        log.info("Getting Item Price = '%s'",testItemName);
         return ITEM_PRICE_TEXT.getText();
      }
 
      public ShoppingCartPage clickShoppingCartButton() {
+        log.info("Clicking Shopping Cart Button");
         SHOPPING_CART_BUTTON.click();
         return new ShoppingCartPage(driver);
      }

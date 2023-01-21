@@ -1,5 +1,6 @@
 package Pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-
+@Log4j2
 public class ProductsPage extends BasePages {
 
     @FindBy(css = ".shopping_cart_link")
@@ -35,6 +36,8 @@ public class ProductsPage extends BasePages {
     }
 
     public boolean isShoppingCartButtonPresent() {
+        log.info("Shopping Cart Button is Present");
+        log.error("Shopping Cart Button isn't Present");
         try {
             SHOPPING_CART_BUTTON.isDisplayed();
         } catch (NoSuchElementException ex) {
@@ -44,50 +47,61 @@ public class ProductsPage extends BasePages {
     }
 
     public ShoppingCartPage clickShoppingCartButton() {
+        log.info("Clicking Shopping Cart Button");
         SHOPPING_CART_BUTTON.click();
         return new ShoppingCartPage(driver);
     }
 
     public void clickAddToCartButton(String itemName) {
+        log.info("Clicking AddToCart Button by Item Name = '%s'",itemName);
         driver.findElement(getItemContainerByName(itemName)).findElement(ADD_TO_CART_BUTTON).click();
     }
 
     public void clickItemNameLink(String itemName) {
+        log.info("Clicking ItemName Link by Item Name = '%s'",itemName);
         driver.findElement(getItemContainerByName(itemName)).findElement(ITEM_NAME_LINK).click();
     }
 
 
     public String getItemPrice(String itemName) {
+        log.info("Getting Item Price = '%s'",itemName);
         return driver.findElement(getItemContainerByName(itemName)).findElement(ITEM_PRICE_TEXT).getText();
     }
 
     public String getItemName(String itemName) {
+        log.info("Getting Item Name = '%s'",itemName);
         return driver.findElement(getItemContainerByName(itemName)).findElement(ITEM_NAME_LINK).getText();
     }
 
     public String getItemDescription(String itemName) {
+        log.info("Getting Item Description = '%s'",itemName);
         return driver.findElement(getItemContainerByName(itemName)).findElement(ITEM_DESRRIPTION_DESC).getText();
     }
 
     public void openItem(String itemName) {
+        log.info("Clicking ItemName Link by Item Name = '%s'",itemName);
         driver.findElement(getItemContainerByName(itemName)).findElement(ITEM_NAME_LINK).click();
     }
 
     private By getItemContainerByName(String itemName) {
+        log.debug("Getting Item Container = '%s'",itemName);
         return By.xpath(String.format(ITEM_CONTAINER_LOCATOR, itemName));
     }
 
     public ProductsPage clickMenuButton() {
+        log.info("Clicking Menu Button");
         MENU_BUTTON.click();
         return this;
     }
 
     public LoginPage clickLogoutButton() {
+        log.info("Clicking LogOut Button");
         LOGOUT_BUTTON.click();
         return new LoginPage(driver);
     }
 
     public void selectSortingOrderOption(String optionName) {
+        log.info("Selecting Sorting Order Option '%s'",optionName);
         Select select = new Select((WebElement) PRODUCT_SORT_CONTAINER);
         select.selectByVisibleText(optionName);
 

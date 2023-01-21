@@ -16,7 +16,7 @@ public class InventoryItemTests extends BaseTests {
         loginPage.setUsername("standard_user").setPassword("secret_sauce").clickLoginButton().clickItemNameLink(testItemName);
 
         Assert.assertEquals(inventoryItemPage.getItemPrice(testItemName), expectedItemPrice);
-        Assert.assertEquals(inventoryItemPage.getItemDecription(testItemName), expectedItemDescription);
+        Assert.assertEquals(inventoryItemPage.getItemDescription(testItemName), expectedItemDescription);
         Assert.assertEquals(inventoryItemPage.getItemName(testItemName), testItemName);
 
         inventoryItemPage.clickAddToCartButton().clickShoppingCartButton();
