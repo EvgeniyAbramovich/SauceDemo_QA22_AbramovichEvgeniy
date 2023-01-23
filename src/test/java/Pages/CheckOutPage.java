@@ -1,10 +1,11 @@
 package Pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
+@Log4j2
 public class CheckOutPage extends BasePages {
 
     @FindBy(css = "#first-name")
@@ -33,27 +34,32 @@ public class CheckOutPage extends BasePages {
     }
 
     public CheckOutPage setFirstNameInput(String firstName) {
+        log.info("Setting First Name = {}", firstName);
         FIRST_NAME_INPUT.sendKeys(firstName);
         return this;
     }
 
     public CheckOutPage setLastNameInput(String lastName) {
+        log.info("Setting Last Name = {}", lastName);
         LAST_NAME_INPUT.sendKeys(lastName);
         return this;
     }
 
     public CheckOutPage setZipCodeInput (String zipCode) {
+        log.info("Setting Zip Code = {}", zipCode);
         ZIP_CODE_INPUT.sendKeys(zipCode);
         return this;
     }
 
     public CheckOutStepTwoPage clickContinueButton() {
+        log.info("Clicking Continue Button");
         CONTINUE_BUTTON.click();
         return new CheckOutStepTwoPage(driver);
 
     }
 
     public ShoppingCartPage clickCancelButton() {
+        log.info("Clicking Cancel Button");
         CANCEL_BUTTON.click();
         return new ShoppingCartPage(driver);
     }

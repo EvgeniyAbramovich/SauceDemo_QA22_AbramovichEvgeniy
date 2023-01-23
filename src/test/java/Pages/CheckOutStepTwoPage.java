@@ -1,11 +1,12 @@
 package Pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
+@Log4j2
 public class CheckOutStepTwoPage extends BasePages {
 
     @FindBy(css = "#finish")
@@ -44,31 +45,38 @@ public class CheckOutStepTwoPage extends BasePages {
     }
 
     public CheckOutCompletePage clickFinishButton() {
+        log.info("Clicking Finish Button");
         FINISH_BUTTON.click();
         return new CheckOutCompletePage(driver);
     }
 
     public static String getItemPrice(String testItemName) {
+        log.info("Getting Item Price = {}",testItemName);
         return ITEM_PRICE_TEXT.getText();
     }
 
     public static String getItemDescription(String testItemName) {
+        log.info("Getting Item Price = {}",testItemName);
         return ITEM_DESCRIPTION_DESC.getText();
     }
 
     public static String getItemSummarySubtotalLabel(String testItemName) {
+        log.info("Getting Item Summary Subtotal Label = {}",testItemName);
         return SUMMARY_SUBTOTAL_LABEL.getText();
     }
 
     public static String getItemSummaryTaxLabel (String testItemName) {
+        log.info("Getting Item Summary Tax Label = {}",testItemName);
         return SUMMARY_TAX_LABEL.getText();
     }
 
     public static String getItemSummaryTotalLabel (String testItemName) {
+        log.info("Getting Item Summary Total Label = {}",testItemName);
         return SUMMARY_TOTAL_LABEL.getText();
     }
 
     public ProductsPage clickCancelButton() {
+        log.info("Clicking Cancel Button");
         CANCEL_BUTTON.click();
         return new ProductsPage(driver);
     }
