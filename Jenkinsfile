@@ -1,14 +1,6 @@
 pipeline {
     agent any
 
-    triggers {
-
-    parameterizedCron(
-                0 21 * * *
-                30 21 * * * %SUITE_NAME=RegressionTest.xml
-            )
-    }
-
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "M3"
