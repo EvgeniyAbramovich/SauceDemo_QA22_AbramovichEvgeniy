@@ -3,10 +3,10 @@ pipeline {
 
     triggers {
 
-    parameterizedCron(
+    parameterizedCron('''
                 0 21 * * *
                 30 21 * * * %SUITE_NAME=RegressionTest.xml
-            )
+            ''')
     }
 
     tools {
