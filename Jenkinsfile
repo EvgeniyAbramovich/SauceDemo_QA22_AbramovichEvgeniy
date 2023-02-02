@@ -30,7 +30,7 @@ pipeline {
                 git branch: "%{params.BRANCH}", url: 'https://github.com/EvgeniyAbramovich/SauceDemo_QA22_AbramovichEvgeniy'
 
                 // Run Maven on an agent.
-                bat "mvn -Dmaven.test.failure.igmore=true -DsuiteXmlFile=%{params.SUITE_NAME} clean test
+                bat "mvn -Dmaven.test.failure.igmore=true -DsuiteXmlFile=%{params.SUITE_NAME}
                 -Dbrowser=%{params.BROWSER} -Dheadless=%{params.HEADLESS}"
 
                 // To run Maven on a Windows agent, use
