@@ -4,7 +4,8 @@ pipeline {
     triggers {
 
     parameterizedCron('''
-                0 21 * * *
+
+                0 21 * * * %SUITE_NAME=SmokeTest.xml
                 30 21 * * * %SUITE_NAME=RegressionTest.xml
             ''')
     }
@@ -29,7 +30,8 @@ pipeline {
                 git branch: "%{params.BRANCH}", url: 'https://github.com/EvgeniyAbramovich/SauceDemo_QA22_AbramovichEvgeniy'
 
                 // Run Maven on an agent.
-                bat "mvn -Dmaven.test.failure.igmore=true -DsuiteXmlFile=%{params.SUITE_NAME} clean test"
+                bat "mvn -Dmaven.test.failure.igmore=true -DsuiteXmlFile=%{params.SUITE_NAME} clean test
+                -Dbrowser=%{params.BROWSER} -Dheadless=%{params.HEADLESS}"
 
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
@@ -57,6 +59,4 @@ pipeline {
             }
         }
     }
-
-
 }

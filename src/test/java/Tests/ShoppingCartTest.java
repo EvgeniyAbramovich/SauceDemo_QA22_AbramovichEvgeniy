@@ -1,10 +1,7 @@
 package Tests;
 
-import Pages.ShoppingCartPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import static org.testng.Assert.*;
 
 public class ShoppingCartTest extends BaseTests {
 

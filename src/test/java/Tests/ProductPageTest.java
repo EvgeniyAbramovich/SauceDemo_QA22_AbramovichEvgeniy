@@ -1,13 +1,8 @@
 package Tests;
 
 import org.testng.Assert;
-import org.testng.IRetryAnalyzer;
-import org.testng.ITestListener;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class ProductPageTest extends BaseTests {
 
