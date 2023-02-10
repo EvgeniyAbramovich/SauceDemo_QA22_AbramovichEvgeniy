@@ -27,10 +27,10 @@ pipeline {
             steps {
                 // Get some code from a GitHub repository
                 // On Windows should be %{params.BRANCH}%
-                git branch: "%{params.BRANCH}", url: 'https://github.com/EvgeniyAbramovich/SauceDemo_QA22_AbramovichEvgeniy'
+                git branch: "${params.BRANCH}", url: 'https://github.com/EvgeniyAbramovich/SauceDemo_QA22_AbramovichEvgeniy'
 
                 // Run Maven on an agent.
-                bat "mvn -Dmaven.test.failure.igmore=true -DsuiteXmlFile=%{params.SUITE_NAME} clean test"
+                bat "mvn -Dmaven.test.failure.igmore=true -DsuiteXmlFile=${params.SUITE_NAME} clean test"
 
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
