@@ -5,9 +5,13 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import jdk.jfr.Description;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestContext;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 
 import java.util.concurrent.TimeUnit;
 
@@ -26,11 +30,15 @@ public abstract class BaseTests {
 
 
 
-    @Description("Starting a browser")
-    @Parameters({"browser"})
     @BeforeClass (alwaysRun = true)
-    public void setUp(@Optional("chrome") String browserName, ITestContext testContext) throws Exception {
+    public void setUp(ITestContext testContext) throws Exception {
+        String browserName = System.getProperty("browser", "chrome");
+        String headless = System.getProperty("headless","false");
         if (browserName.equals("chrome")) {
+            ChromeOptions options = new ChromeOptions();
+            if (headless.equals("true")){
+                options.addArguments("--headless");
+            }
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
         } else if (browserName.equals("firefox")) {
